@@ -1,0 +1,17 @@
+#MyEclipse Hibernate Properties
+#Mon Nov 14 18:39:55 CST 2016
+genVersionTag=false
+sessionFactoryName=com.panlei.employee.domain.HibernateSessionFactory
+genAnnotations=false
+configFile=/ssh_employee/src/hibernate.cfg.xml
+reStrategyClass=
+sessionFactoryId=
+profile=
+detectM2M=false
+genBasicCompId=false
+keyGenerator=
+createConfigFile=true
+basePersistenceClass=
+detectO2O=false
+useJavaTypes=true
+reSettingsFile=

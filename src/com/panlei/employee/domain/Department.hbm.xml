@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-9-12 9:12:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.panlei.employee.domain.Department" table="department">
+		<id name="did" column="did">
+			<generator class="native"></generator>
+		</id>
+		<property name="dname" column="dname" length="20"></property>
+		<property name="ddesc" column="ddesc"></property>
+		
+		<!-- 
+			配置关联关系的映射
+			name对应类中的属性
+			class对应属性属于哪个类
+			column对应该属性对应数据库中的哪一列，该列是外键
+		 -->
+		<set name="employees">
+			<key column="dno"></key>
+			<one-to-many class="com.panlei.employee.domain.Employee"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<!-- Action 是一个类 -->	
+	<!-- include节点是struts中组件化的方式 可以将每个功能模块独立到一个XML配置文件中，然后用include节点引入进来 -->
+	<!-- <include file="struts-default.xml"></include>   -->
+	
+	<!-- package提供了将多个Action组织为一个模块的方式
+		package名字必须是唯一的
+		package可以扩展，即继承   父package必须在子package前配置
+		name:package名称
+		extends:继承父package的名称
+		abstract:设置package的属性为抽象的 ，抽象的package不能定义action 取值为true|false
+		namespace:定义package的命名空间，影响url地址，例如定义为/test,则为http://localhost:8080/工程名/test/XX.action
+	 -->
+	
+	<!-- Action 是一个类 -->
+	<!-- Action配置    一个Action可以多次映射（只要action配置中的name不同） 
+			name:action名称    访问路径：http://localhost:8080/工程名/test/product_save.action
+			class:对应的类
+			method:调用Action中的方法名
+		*是匹配
+	-->
+	
+	<!-- 由于Action交由spring管理，这里便不再需要在class属性中指定类路径了，只需要配置属性值为spring中的id -->
+	<package name="ssh" extends="struts-default" namespace="/">
+		<action name="employee_*" class="employeeAction" method="{1}">
+			<result name="input">/index.jsp</result>
+			<result name="success" type="redirect">/frame.jsp</result>
+		</action>
+	</package>
+	
+</struts>    

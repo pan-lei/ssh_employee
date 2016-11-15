@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-9-12 9:12:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.panlei.employee.domain.Employee" table="employee">
+		<id name="eid" column="eid">
+			<generator class="native"></generator>
+		</id>
+		<property name="ename" column="ename" length="20" />
+		<property name="sex" column="sex" length="20" />
+		<property name="birthday" column="birthday" length="20" />
+		<property name="joinDate" column="joinDate" length="20" />
+		<property name="eno" column="eno" length="20" />
+		<property name="username" column="username" length="20" />
+		<property name="password" column="password" length="20" />
+		
+		<!-- 
+			配置关联关系的映射
+			name对应类中的属性
+			class对应属性属于哪个类
+			column对应该属性对应数据库中的哪一列，该列是外键
+		 -->
+		<many-to-one name="department" class="com.panlei.employee.domain.Department" column="dno"></many-to-one>
+	</class>
+</hibernate-mapping>
