@@ -1,8 +1,11 @@
 package com.panlei.employee.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.panlei.employee.domain.Department;
+import com.panlei.employee.domain.PageBean;
+import com.panlei.employee.service.DepartmentService;
 
 /**
  * 部门管理的Action类
@@ -15,8 +18,28 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
 	private Department department = new Department();
 	@Override
 	public Department getModel() {
-		// TODO Auto-generated method stub
 		return department;
 	}
+	//注入部门管理的service
+	private DepartmentService departmentService;
+	
+	public void setDepartmentService(DepartmentService departmentService) {
+		this.departmentService = departmentService;
+	}
 
+	//分页功能
+	private Integer currPage=1;
+	
+	public void setCurrPage(Integer currPage) {
+		this.currPage = currPage;
+	}
+
+	//提供查询的方法
+	public String findAll() {
+		PageBean<Department> pageBean = departmentService.findByPage(currPage);
+		//将pageBean存入值栈中
+		ActionContext.getContext().getValueStack().push(pageBean);
+		return "findAll";
+	}
+	
 }

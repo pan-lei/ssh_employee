@@ -48,9 +48,15 @@
 	<bean id="employeeAction" class="com.panlei.employee.action.EmployeeAction" scope="prototype">
 		<property name="employeeService" ref="employeeService"></property>
 	</bean>
+	<bean id="departmentAction" class="com.panlei.employee.action.DepartmentAction" scope="prototype">
+		<property name="departmentService" ref="departmentService"></property>
+	</bean>
 	<!-- 配置业务层的类 -->
 	<bean id="employeeService" class="com.panlei.employee.service.impl.EmployeeServiceImpl">
 		<property name="employeeDao" ref="employeeDao"></property>
+	</bean>
+	<bean id="departmentService" class="com.panlei.employee.service.impl.DepartmentServiceImpl">
+		<property name="departmentDao" ref="departmentDao"></property>
 	</bean>
 	<!-- 配置工具类 -->
 	<bean id="hibernateUtil" class="com.panlei.employee.util.HibernateUtil">
@@ -60,7 +66,9 @@
 	<bean id="employeeDao" class="com.panlei.employee.dao.impl.EmployeeDaoImpl">
 		<property name="hibernateUtil" ref="hibernateUtil"></property>
 	</bean>
-	
+	<bean id="departmentDao" class="com.panlei.employee.dao.impl.DepartmentDaoImpl">
+		<property name="hibernateUtil" ref="hibernateUtil"></property>
+	</bean>
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>

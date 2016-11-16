@@ -29,6 +29,9 @@
 			<result name="input">/index.jsp</result>
 			<result name="success" type="redirect">/frame.jsp</result>
 		</action>
+		<action name="department_*" class="departmentAction" method="{1}">
+			<result name="findAll">/frame/list.jsp</result>
+		</action>
 	</package>
 	
 </struts>    
