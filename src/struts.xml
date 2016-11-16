@@ -30,7 +30,7 @@
 			<result name="success" type="redirect">/frame.jsp</result>
 		</action>
 		<action name="department_*" class="departmentAction" method="{1}">
-			<result name="findAll">/frame/list.jsp</result>
+			<result name="findAll">/frame/listDep.jsp</result>
 		</action>
 	</package>
 	
