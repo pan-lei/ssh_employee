@@ -35,7 +35,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 		pageBean.setTotalPage(num.intValue());
 		//封装每页显示的数据
 		int begin = (currPage - 1)*pageSize;
-		List<Department> list = departmentDao.findByPage(begin+1, pageSize);
+		List<Department> list = departmentDao.findByPage(begin, pageSize);
 		pageBean.setList(list);
 		return pageBean;
 	}

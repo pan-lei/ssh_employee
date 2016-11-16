@@ -42,9 +42,9 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		String hql = "from Department";
 		Query query = session.createQuery(hql);
 		//按参数位置绑定查询条件
-		System.out.println(begin-1);
+		System.out.println(begin);
 		System.out.println(pageSize);
-		query.setFirstResult(begin-1);
+		query.setFirstResult(begin);
 		query.setMaxResults(pageSize);
 		List<Department> list = query.list(); 
 		return list;
