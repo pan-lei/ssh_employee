@@ -2,6 +2,8 @@ package com.panlei.employee.service.impl;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.panlei.employee.dao.DepartmentDao;
 import com.panlei.employee.domain.Department;
 import com.panlei.employee.domain.PageBean;
@@ -9,6 +11,7 @@ import com.panlei.employee.service.DepartmentService;
 /**
  * 部门业务层的实现类
  */
+@Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 	//注入部门管理的DAO
 	private DepartmentDao departmentDao;
@@ -38,6 +41,31 @@ public class DepartmentServiceImpl implements DepartmentService {
 		List<Department> list = departmentDao.findByPage(begin, pageSize);
 		pageBean.setList(list);
 		return pageBean;
+	}
+
+	@Override
+	//业务层保存部门的方法
+	public void save(Department department) {
+		departmentDao.save(department);
+	}
+
+	@Override
+	//业务层根据部门id查询部门的方法
+	public Department findById(Integer did) {
+		// TODO Auto-generated method stub
+		return departmentDao.findById(did);
+	}
+
+	//业务层实现的部门更新方法
+	@Override
+	public void update(Department department) {
+		departmentDao.update(department);
+	}
+
+	@Override
+	//业务层删除部门的方法
+	public void delete(Department department) {
+		departmentDao.delete(department);
 	}
 	
 }

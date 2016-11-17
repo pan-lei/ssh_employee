@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <table border="0" width="600px">
 <tr>
-<td align="center" style="font-size:24px; color:#666"> 部门添加</td>
+<td align="center" style="font-size:24px; color:#666"> 部门编辑 </td>
 </tr>
 <tr>
 <td align="right" > 
@@ -21,11 +21,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <br/>
 <br/>
 <!-- action对应一个action标签，id对应提交时的对应关系 -->
-<s:form id="saveForm" action="department_save" method="post" namespace="/" theme="simple">
+<s:form id="saveForm" action="department_update" method="post" namespace="/" theme="simple">
+<!-- 隐藏域，指明修改的是哪个部门 -->
+<s:hidden name="did" value="%{model.did}"></s:hidden>
 	<table style="font-size::16px">
 		<tr>
 		  <td>部门名称：</td>
-		  <td><s:textfield name="dname"/></td>
+		  <td><s:textfield name="dname" value="%{model.dname}"/></td>
 		</tr>
 		<tr>
 		  <td>部门介绍：</td>
@@ -34,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 		  <td width="10%"></td>
 		  <td>
-		     <s:textarea rows="5" cols="50" name="ddesc"></s:textarea>
+		     <s:textarea rows="5" cols="50" name="ddesc" value="%{model.ddesc}"></s:textarea>
 		  </td>
 		</tr>
 	</table>

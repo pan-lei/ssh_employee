@@ -24,19 +24,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td align="center" style="font-size:24px; color:#666"> 部门管理</td>
 </tr>
 <tr>
-<td align="right" > <a href="addDepartment.jsp">添加</a></td>
+<td align="right" > <a href="${pageContext.request.contextPath}/department_saveUI.action">添加</a></td>
 </tr>
 </table>
 <br/>
 <table cellspacing="0" border="1" class="table1">
 <thead>
-   <tr><th width="450">部门名称</th><th  width="450">编辑</th></tr>
+   <tr>
+    	<th width="300">部门名称</th>
+   		<th  width="300">编辑</th>
+   		<th  width="300">删除</th>
+   </tr>
 </thead>
 <tbody>
 <s:iterator value="list" var="d">
 	<tr>
 		<td align="center"><s:property value="#d.dname"/></td>
-		<td align="center"><a href="editDept.jsp"><img src="<%=basePath %>images/编辑.png"</a></td>
+		<td align="center"><a href="${pageContext.request.contextPath}/department_edit.action?did=<s:property value="#d.did"/>"><img src="<%=basePath %>images/编辑.png"</a></td>
+		<td align="center"><a href="${pageContext.request.contextPath}/department_delete.action?did=<s:property value="#d.did"/>"><img src="<%=basePath %>images/trash.gif"</a></td>
 	</tr>
 </s:iterator>
 </tbody>

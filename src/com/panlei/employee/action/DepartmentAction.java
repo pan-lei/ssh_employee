@@ -9,7 +9,7 @@ import com.panlei.employee.service.DepartmentService;
 
 /**
  * 部门管理的Action类
- * 利用模型驱动接收页面的参数
+ * 利用模型驱动ModelDriven<Department>接收页面的参数,可以是表单提交的数据，也可以是某个参数值
  * 然后调用service层
  */
 public class DepartmentAction extends ActionSupport implements ModelDriven<Department>{
@@ -40,6 +40,37 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
 		//将pageBean存入值栈中
 		ActionContext.getContext().getValueStack().push(pageBean);
 		return "findAll";
+	}
+	
+	//添加部门的方法
+	public String saveUI() {
+		return "saveUI";
+	}
+	
+	//添加部门执行的方法
+	public String save() {
+		departmentService.save(department);
+		return "saveSuccess";
+	}
+	
+	//编辑部门的方法
+	public String edit() {
+		department = departmentService.findById(department.getDid());
+		return "editSuccess";
+	}
+	
+	//修改部门执行的方法
+	public String update() {
+		departmentService.update(department);
+		return "updateSuccess";
+	}
+	
+	//删除部门的方法
+	public String delete() {
+		//删除之前先查询是否有该部门
+		department = departmentService.findById(department.getDid());
+		departmentService.delete(department);
+		return "deleteSuccess";
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.DetachedCriteria;
 
 import com.panlei.employee.dao.DepartmentDao;
@@ -32,6 +33,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 			//System.out.println(count);
 			return count;
 		}
+		hibernateUtil.closeSession(session);
 		return 0;
 	}
 
@@ -40,6 +42,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	//查询每页显示的数据
 	public List<Department> findByPage(int begin, int pageSize) {
 		String hql = "from Department";
+		session = hibernateUtil.getSession();
 		Query query = session.createQuery(hql);
 		//按参数位置绑定查询条件
 		System.out.println(begin);
@@ -47,6 +50,44 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		query.setFirstResult(begin);
 		query.setMaxResults(pageSize);
 		List<Department> list = query.list(); 
+		hibernateUtil.closeSession(session);
 		return list;
+	}
+
+	@Override
+	//DAO中实现存储部门的方法
+	public void save(Department department) {
+		session = hibernateUtil.getSession();
+		session.save(department);
+		hibernateUtil.closeSession(session);
+	}
+
+	@Override
+	//DAO中根据部门id查询部门
+	public Department findById(Integer did) {
+		session = hibernateUtil.getSession();
+		Department department = (Department) session.get(Department.class, did);
+		hibernateUtil.closeSession(session);
+		return department;
+	}
+
+	@Override
+	//DAO中修改部门的方法
+	public void update(Department department) {
+		session = hibernateUtil.getSession();
+		Transaction transaction = session.beginTransaction();
+		session.update(department);
+		transaction.commit();
+		hibernateUtil.closeSession(session);
+	}
+
+	@Override
+	//DAO中删除部门的方法
+	public void delete(Department department) {
+		session = hibernateUtil.getSession();
+		Transaction transaction = session.beginTransaction();
+		session.delete(department);
+		transaction.commit(); 
+		hibernateUtil.closeSession(session);
 	}
 }

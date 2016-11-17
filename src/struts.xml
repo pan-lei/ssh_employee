@@ -31,6 +31,12 @@
 		</action>
 		<action name="department_*" class="departmentAction" method="{1}">
 			<result name="findAll">/frame/listDep.jsp</result>
+			<result name="saveUI">/frame/addDepartment.jsp</result>
+			<!-- 添加成功就重定向到action -->
+			<result name="saveSuccess" type="redirectAction">department_findAll.action</result>
+			<result name="editSuccess">/frame/editDepartment.jsp</result>
+			<result name="updateSuccess" type="redirectAction">department_findAll.action</result>
+			<result name="deleteSuccess" type="redirectAction">department_findAll.action</result>
 		</action>
 	</package>
 	
