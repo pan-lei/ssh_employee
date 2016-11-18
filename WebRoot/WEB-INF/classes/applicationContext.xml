@@ -47,6 +47,7 @@
 	 -->
 	<bean id="employeeAction" class="com.panlei.employee.action.EmployeeAction" scope="prototype">
 		<property name="employeeService" ref="employeeService"></property>
+		<property name="departmentService" ref="departmentService"></property>
 	</bean>
 	<bean id="departmentAction" class="com.panlei.employee.action.DepartmentAction" scope="prototype">
 		<property name="departmentService" ref="departmentService"></property>

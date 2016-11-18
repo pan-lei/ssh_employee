@@ -90,4 +90,15 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		transaction.commit(); 
 		hibernateUtil.closeSession(session);
 	}
+
+	@Override
+	//查询所有部门的方法
+	public List<Department> findAll() {
+		String hql = "from Department";
+		session = hibernateUtil.getSession();
+		Query query = session.createQuery(hql);
+		List<Department> list = query.list(); 
+		hibernateUtil.closeSession(session);
+		return list;
+	}
 }

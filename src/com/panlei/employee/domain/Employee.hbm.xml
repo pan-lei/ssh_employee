@@ -21,6 +21,6 @@
 			class对应属性属于哪个类
 			column对应该属性对应数据库中的哪一列，该列是外键
 		 -->
-		<many-to-one name="department" class="com.panlei.employee.domain.Department" column="dno"></many-to-one>
+		<many-to-one name="department" class="com.panlei.employee.domain.Department" lazy="false" column="dno"></many-to-one>
 	</class>
 </hibernate-mapping>

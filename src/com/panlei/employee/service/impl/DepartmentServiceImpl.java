@@ -67,5 +67,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public void delete(Department department) {
 		departmentDao.delete(department);
 	}
+
+	@Override
+	public List<Department> findAll() {
+		return departmentDao.findAll();
+	}
 	
 }
