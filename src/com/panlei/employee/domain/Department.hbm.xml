@@ -15,8 +15,10 @@
 			name对应类中的属性
 			class对应属性属于哪个类
 			column对应该属性对应数据库中的哪一列，该列是外键
+			cascade="delete"  是一个级联属性，删除部门时该部门下的员工一起删除
+			inverse="true"    放弃外键维护权 true是放弃，false是不放弃
 		 -->
-		<set name="employees">
+		<set name="employees" cascade="delete" inverse="true">
 			<key column="dno"></key>
 			<one-to-many class="com.panlei.employee.domain.Employee"/>
 		</set>

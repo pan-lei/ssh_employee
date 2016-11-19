@@ -33,6 +33,7 @@
 			<result name="saveSuccess" type="redirectAction">employee_findAll.action</result>
 			<result name="editSuccess">/frame/editEmployee.jsp</result>
 			<result name="updateSuccess" type="redirectAction">employee_findAll.action</result>
+			<result name="deleteSuccess" type="redirectAction">employee_findAll.action</result>
 		</action>
 		<action name="department_*" class="departmentAction" method="{1}">
 			<result name="findAll">/frame/listDep.jsp</result>

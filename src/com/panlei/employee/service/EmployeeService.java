@@ -18,4 +18,6 @@ public interface EmployeeService {
 
 	void update(Employee employee);
 
+	void delete(Employee employee);
+
 }

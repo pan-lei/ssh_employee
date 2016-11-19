@@ -101,4 +101,12 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 		employeeService.update(employee);
 		return "updateSuccess";
 	}
+	
+	//删除员工的方法
+	public String delete() {
+		//删除之前先查询是否有该部门
+		employee = employeeService.findById(employee.getEid());
+		employeeService.delete(employee);
+		return "deleteSuccess";
+	}
 }

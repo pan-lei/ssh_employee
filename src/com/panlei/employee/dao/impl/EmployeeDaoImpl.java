@@ -80,6 +80,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
+	//DAO中根据员工id查询员工
 	public Employee findById(Integer eid) {
 		session = hibernateUtil.getSession();
 		Employee employee = (Employee) session.get(Employee.class, eid);
@@ -88,6 +89,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
+	//DAO中修改员工信息的方法
 	public void update(Employee employee) {
 		session = hibernateUtil.getSession();
 		Transaction transaction = session.beginTransaction();
@@ -95,6 +97,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		transaction.commit();
 		hibernateUtil.closeSession(session);
 	}
-	
+
+	@Override
+	//DAO中删除员工的方法
+	public void delete(Employee employee) {
+		session = hibernateUtil.getSession();
+		Transaction transaction = session.beginTransaction();
+		session.delete(employee);
+		transaction.commit(); 
+		hibernateUtil.closeSession(session);
+	}
 	
 }
